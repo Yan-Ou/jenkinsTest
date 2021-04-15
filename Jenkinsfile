@@ -26,8 +26,8 @@ pipeline {
     stage('Test') {
       steps {
         container('toolbox'){
-          sh 'versions=$(git diff HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s"'
-          sh 'echo $versions'
+          sh 'versions=$(git diff HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s")'
+          sh "echo $versions"
           sh 'gcloud container images list-tags gcr.io/pingcap-public/coreos/etcd'
         }
       }
