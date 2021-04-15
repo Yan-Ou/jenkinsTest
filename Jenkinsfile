@@ -26,7 +26,7 @@ pipeline {
     stage('Test') {
       steps {
         container('toolbox'){
-          sh 'gcloud config set project pingcap-public'
+          // sh 'gcloud config set project pingcap-public'
           sh 'gcloud container images list-tags gcr.io/pingcap-public/coreos/etcd'
         }
       }
