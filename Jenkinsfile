@@ -6,11 +6,6 @@ pipeline {
     }
   }
 
-  environment {
-    VAULT_ADDR = credentials("vault-addr")
-    VAULT_TOKEN = credentials("vault-token")
-  }
-
   stages {
     stage("Cleanup") {
       steps {
