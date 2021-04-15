@@ -28,6 +28,7 @@ pipeline {
         container('toolbox'){
           sh 'versions=$(git diff HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'".*"\' | sed \'s/"//g\')'
           sh 'echo $versions'
+          sh 'ls'
           sh 'gcloud container images list-tags gcr.io/pingcap-public/coreos/etcd'
         }
       }
