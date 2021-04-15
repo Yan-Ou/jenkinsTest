@@ -26,7 +26,8 @@ pipeline {
     stage('Test') {
       steps {
         container('toolbox'){
-          sh 'git diff --unified=0 HEAD^ HEAD'
+          sh 'git diff --unified=0 HEAD^ HEAD > git.txt'
+          sh 'cat git.txt'
           sh 'gcloud container images list-tags gcr.io/pingcap-public/coreos/etcd'
         }
       }
