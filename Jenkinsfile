@@ -18,7 +18,10 @@ pipeline {
     stage("Checkout Code") {
       steps {
         container('toolbox'){
-          checkout scm
+          git branch: 'master',
+          url: 'https://github.com/pingcap/pingcap.github.io.git'
+
+          sh 'ls -al && pwd'
         }
       }
     }
