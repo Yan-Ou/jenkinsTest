@@ -18,7 +18,7 @@ pipeline {
     stage("Checkout Code") {
       steps {
         container('toolbox'){
-          dir(tidb){
+          dir('Tidb'){
           git branch: 'master',
           url: 'https://github.com/pingcap/pingcap.github.io.git'
         }
@@ -30,7 +30,7 @@ pipeline {
     stage('Build and Publish') {
       steps {
         container('toolbox'){
-          dir(tidb){
+          dir('Tidb/data'){
             sh 'pwd'
             sh 'ls -al'
             sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
