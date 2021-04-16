@@ -15,22 +15,28 @@ pipeline {
       }
     }
 
-    stage("Checkout Code") {
-      steps {
-        container('toolbox'){
-          dir('Tidb'){
-          git branch: 'master',
-          url: 'https://github.com/pingcap/pingcap.github.io.git'
-        }
-          // sh 'ls -al && pwd'
-      }
-    }
-  }
+  //   stage("Checkout Code") {
+  //     steps {
+  //       container('toolbox'){
+  //         dir('Tidb'){
+  //         git(
+  //           branch: 'master',
+  //           url: 'https://github.com/pingcap/pingcap.github.io.git'
+  //           )
+  //       }
+  //         // sh 'ls -al && pwd'
+  //     }
+  //   }
+  // }
 
     stage('Build and Publish') {
       steps {
         container('toolbox'){
-          dir('Tidb/data'){
+          dir('Tidb'){
+            git(
+              branch: 'master',
+              url: 'https://github.com/pingcap/pingcap.github.io.git'
+              )
             sh 'pwd'
             sh 'ls -al'
             sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
