@@ -18,21 +18,24 @@ pipeline {
     stage("Checkout Code") {
       steps {
         container('toolbox'){
+          dir(tidb){
           git branch: 'master',
           url: 'https://github.com/pingcap/pingcap.github.io.git'
-
-          // sh 'ls -al && pwd'
         }
+          // sh 'ls -al && pwd'
       }
     }
+  }
 
     stage('Build and Publish') {
       steps {
         container('toolbox'){
-          sh 'pwd'
-          sh 'ls -al'
-          sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
-          sh 'git diff -U0 HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'"v.*"\' | sed \'s/"//g\' | xargs -I{} sh -c \'docker pull pingcap/tidb:{} && docker tag pingcap/tidb:{} gcr.io/pingcap-public/tidb:{} && docker push gcr.io/pingcap-public/tidb:{}\''
+          dir(tidb){
+            sh 'pwd'
+            sh 'ls -al'
+            sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
+            sh 'git diff -U0 HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'"v.*"\' | sed \'s/"//g\' | xargs -I{} sh -c \'docker pull pingcap/tidb:{} && docker tag pingcap/tidb:{} gcr.io/pingcap-public/tidb:{} && docker push gcr.io/pingcap-public/tidb:{}\''
+          }
         }
       }
     }
