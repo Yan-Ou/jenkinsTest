@@ -27,7 +27,7 @@ pipeline {
       steps {
         container('toolbox'){
           sh 'v1=$(git diff HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'".*"\' | sed \'s/"//g\') && echo $v1'
-          sh 'v2=$(git diff -U0 HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'"v\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}$*"\') && echo $v2'
+          sh 'v2=$(git diff HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'"v\\d+"\' | sed \'s/"//g\') && echo $v2'
           // sh 'echo $versions'
           // sh 'gcloud container images list-tags gcr.io/pingcap-public/coreos/etcd'
           sh 'gcloud auth configure-docker gcr.io/pingcap-public'
