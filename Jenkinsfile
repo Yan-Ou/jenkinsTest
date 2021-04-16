@@ -20,9 +20,10 @@ pipeline {
         container('toolbox'){
           dir('Tidb'){
           git(
-            branch: 'master',
+            branch: 'src',
             url: 'https://github.com/pingcap/pingcap.github.io.git'
             )
+            sh 'ls -al'
         }
         sh 'ls -al && pwd'
       }
