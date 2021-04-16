@@ -33,7 +33,7 @@ pipeline {
     stage('Build and Publish') {
       steps {
         container('toolbox'){
-          dir('Tidb'){
+          dir('Tidb/data'){
             sh 'pwd'
             sh 'ls -al'
             sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
