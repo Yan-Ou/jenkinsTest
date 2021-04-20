@@ -39,7 +39,6 @@ pipeline {
             && docker tag pingcap/tikv:{} gcr.io/pingcap-public/tikv:{} && docker tag pingcap/br:{} gcr.io/pingcap-public/br:{} \
             && docker push gcr.io/pingcap-public/tidb:{} && docker push gcr.io/pingcap-public/tikv:{} && docker push gcr.io/pingcap-public/br:{}\'"""
           }
-          }
         }
       }
     }
