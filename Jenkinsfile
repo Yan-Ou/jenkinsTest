@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      // defaultContainer 'jnlp'
+      defaultContainer 'jnlp'
       yamlFile 'jenkins-slave-pod.yaml'
     }
   }
