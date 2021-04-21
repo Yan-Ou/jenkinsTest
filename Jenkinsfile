@@ -54,12 +54,12 @@
 
 pipeline {
     agent {
-        docker { image 'node:14-alpine' }
+        docker { image 'gcr.io/pingcap-public/sre-toolbox:v0.0.1' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'git'
             }
         }
     }
