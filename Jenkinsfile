@@ -18,7 +18,6 @@ pipeline {
 
     stage("Checkout Code") {
       steps {
-        script{
           container('docker') {
             docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1').inside {
               dir('Tidb'){
@@ -29,7 +28,6 @@ pipeline {
               }
             }
           }
-        }
       }
     }
 
