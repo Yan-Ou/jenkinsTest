@@ -10,7 +10,7 @@ pipeline {
     stage("Cleanup") {
       steps {
         script{
-          container('docker'){
+          container('toolbox'){
             docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1').inside{
             deleteDir()
             }
