@@ -9,15 +9,12 @@ pipeline {
   stages {
     stage("Cleanup") {
       steps {
-        script{
           container('toolbox'){
-            docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1').inside{
             deleteDir()
-            }
+            sh 'docker pull gcr.io/pingcap-public/sre-toolbox:v0.0.1'
           }
         }
       }
-    }
 
     stage("Checkout Code") {
       steps {
