@@ -1,11 +1,11 @@
 pipeline {
-  // agent {
-  //   kubernetes {
-  //     defaultContainer 'jnlp'
-  //     yamlFile 'jenkins-slave-pod.yaml'
-  //   }
-  // }
-  agent any
+  agent {
+    kubernetes {
+      defaultContainer 'jnlp'
+      yamlFile 'jenkins-slave-pod.yaml'
+    }
+  }
+
 
   stages {
   //   stage("Cleanup") {
