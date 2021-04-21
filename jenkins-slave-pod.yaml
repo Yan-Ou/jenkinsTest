@@ -4,7 +4,7 @@ metadata:
 spec:
   containers:
     - name: toolbox
-      image: gcr.io/pingcap-public/sre-tooolbox:v0.0.1
+      image: gcr.io/pingcap-public/sre-toolbox:v0.0.1
       command:
         - cat
       tty: true

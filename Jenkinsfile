@@ -2,7 +2,7 @@ pipeline {
   agent {
     kubernetes {
       defaultContainer 'jnlp'
-      yamlFile 'jenkins-slave-pod.yaml'
+      // yamlFile 'jenkins-slave-pod.yaml'
     }
   }
 
@@ -30,7 +30,8 @@ pipeline {
 
     stage('Build and Publish') {
       steps {
-        container('toolbox'){
+        // container('toolbox'){
+        docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1'){
           dir('Tidb/data'){
             sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
             sh """git diff -U0 HEAD^ HEAD tidb_download_pkg.json | grep "^\\+\\s" | grep -o \'"v.*"\' | sed \'s/"//g\' | \
