@@ -3,21 +3,15 @@ metadata:
     app: sre-toolbox
 spec:
   containers:
-    # - name: docker
-    #   image: docker:latest
-    #   securityContext:
-    #     privileged: true
     - name: toolbox
       image: gcr.io/pingcap-public/sre-toolbox:v0.0.1
-      # securityContext:
-      #   privileged: true
-    #   command:
-    #     - cat
-    #   tty: true
-  #     volumeMounts:
-  #       - mountPath: /var/run/docker.sock
-  #         name: docker-sock
-  # volumes:
-  #   - name: docker-sock
-  #     hostPath:
-  #       path: /var/run/docker.sock
+      command:
+        - cat
+      tty: true
+      volumeMounts:
+        - mountPath: /var/run/docker.sock
+          name: docker-sock
+  volumes:
+    - name: docker-sock
+      hostPath:
+        path: /var/run/docker.sock
