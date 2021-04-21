@@ -9,8 +9,9 @@ pipeline {
   stages {
     stage("Cleanup") {
       steps {
-          container('toolbox'){
+          container('docker'){
             deleteDir()
+            sh 'docker pull gcr.io/pingcap-public/sre-toolbox:v0.0.1'
           }
         }
       }

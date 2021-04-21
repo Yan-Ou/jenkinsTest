@@ -3,6 +3,10 @@ metadata:
     app: sre-toolbox
 spec:
   containers:
+    - name: docker
+      image: docker:dind
+      securityContext:
+        privileged: true
     - name: toolbox
       image: gcr.io/pingcap-public/sre-toolbox:v0.0.1
       command:
