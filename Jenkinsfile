@@ -20,7 +20,7 @@ pipeline {
       steps {
         script{
           node {
-            docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1'){
+            docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1').inside {
               dir('Tidb'){
               git(
                 branch: 'src',
