@@ -3,6 +3,8 @@ metadata:
     app: sre-toolbox
 spec:
   containers:
+    - name: docker
+      image: docker:latest
     - name: toolbox
       image: gcr.io/pingcap-public/sre-toolbox:v0.0.1
       securityContext:
