@@ -6,7 +6,7 @@ pipeline {
     }
   }
 
-  // stages {
+  stages {
   //   stage("Cleanup") {
   //     steps {
   //       container('toolbox'){
