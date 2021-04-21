@@ -31,6 +31,7 @@ pipeline {
     stage('Build and Publish') {
       steps {
         // container('toolbox'){
+        node{
         docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1'){
           dir('Tidb/data'){
             sh 'gcloud auth configure-docker gcr.io/pingcap-public --quiet'
@@ -43,4 +44,5 @@ pipeline {
       }
     }
   }
+}
 }
