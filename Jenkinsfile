@@ -11,7 +11,6 @@ pipeline {
       steps {
           container('toolbox'){
             deleteDir()
-            sh 'docker pull gcr.io/pingcap-public/sre-toolbox:v0.0.1'
           }
         }
       }
