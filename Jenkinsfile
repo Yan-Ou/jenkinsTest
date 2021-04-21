@@ -16,22 +16,18 @@ pipeline {
   //     }
   //   }
 
-    // stage("Checkout Code") {
-    //   steps {
-    //     script{
-    //       container('docker') {
-    //         docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1').inside {
-    //           dir('Tidb'){
-    //           git(
-    //             branch: 'src',
-    //             url: 'https://github.com/pingcap/pingcap.github.io.git'
-    //             )
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    stage("Checkout Code") {
+      steps {
+          container('toolbox') {
+              dir('Tidb'){
+              git(
+                branch: 'src',
+                url: 'https://github.com/pingcap/pingcap.github.io.git'
+                )
+              }
+          }
+      }
+    }
 
     stage('Build and Publish') {
       steps {

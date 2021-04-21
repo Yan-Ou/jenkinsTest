@@ -9,8 +9,8 @@ spec:
     #     privileged: true
     - name: toolbox
       image: gcr.io/pingcap-public/sre-toolbox:v0.0.1
-      securityContext:
-        privileged: true
+      # securityContext:
+      #   privileged: true
     #   command:
     #     - cat
     #   tty: true
