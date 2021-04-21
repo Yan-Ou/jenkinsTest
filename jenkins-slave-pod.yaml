@@ -3,8 +3,8 @@ metadata:
     app: sre-toolbox
 spec:
   containers:
-    - name: docker
-      image: docker:dind
+    - name: dind
+      image: docker:18.09-dind
       securityContext:
         privileged: true
     - name: toolbox
