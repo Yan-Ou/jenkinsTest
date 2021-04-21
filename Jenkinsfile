@@ -2,7 +2,7 @@ pipeline {
   agent {
     kubernetes {
       defaultContainer 'jnlp'
-      yamlFile 'ci/docker-gcr-sync/jenkins-slave-pod.yaml'
+      yamlFile 'jenkins-slave-pod.yaml'
     }
   }
 
