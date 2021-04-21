@@ -1,13 +1,13 @@
-// pipeline {
-//   agent {
-//     kubernetes {
-//       defaultContainer 'jnlp'
-//       yamlFile 'jenkins-slave-pod.yaml'
-//     }
-//   }
-//
-//
-//   stages {
+pipeline {
+  agent {
+    kubernetes {
+      defaultContainer 'jnlp'
+      yamlFile 'jenkins-slave-pod.yaml'
+    }
+  }
+
+
+  stages {
   //   stage("Cleanup") {
   //     steps {
   //       container('toolbox'){
@@ -16,22 +16,22 @@
   //     }
   //   }
 
-    // stage("Checkout Code") {
-    //   steps {
-    //     script{
-    //       node {
-    //         docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1'){
-    //           dir('Tidb'){
-    //           git(
-    //             branch: 'src',
-    //             url: 'https://github.com/pingcap/pingcap.github.io.git'
-    //             )
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    stage("Checkout Code") {
+      steps {
+        script{
+          node {
+            docker.image('gcr.io/pingcap-public/sre-toolbox:v0.0.1'){
+              dir('Tidb'){
+              git(
+                branch: 'src',
+                url: 'https://github.com/pingcap/pingcap.github.io.git'
+                )
+              }
+            }
+          }
+        }
+      }
+    }
 
   //   stage('Build and Publish') {
   //     steps {
@@ -49,18 +49,5 @@
   //     }
   //   }
   // }
-// }
-// }
-
-pipeline {
-    agent {
-        docker { image 'gcr.io/pingcap-public/sre-toolbox:v0.0.1' }
-    }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'git'
-            }
-        }
-    }
+  }
 }
